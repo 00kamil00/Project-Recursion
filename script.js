@@ -19,7 +19,6 @@ console.log(fibs(8))
 
 
 
-
 function fibsRec(n) {
     if (n <= 0) return []
     if (n === 1) return [0]
@@ -31,7 +30,6 @@ function fibsRec(n) {
 }
 
 console.log(fibsRec(8))
-
 
 
 
@@ -53,4 +51,20 @@ function merge(left, right) {
     return result.concat(left.slice(i)).concat(right.slice(j))
 }
 
-console.log(merge([1, 4, 7], [2, 3, 8]))
+
+
+function mergeSort(arr) {
+    if (arr.length < 2) {
+        return arr
+    }
+    const mid = Math.floor(arr.length / 2)
+    const left = arr.slice(0, mid)
+    const right = arr.slice(mid)
+
+    const sortedLeft = mergeSort(left)
+    const sortedRight = mergeSort(right)
+
+    return merge(sortedLeft, sortedRight)
+}
+
+console.log(mergeSort([3, 2, 1, 13, 8, 5, 0, 1]))
